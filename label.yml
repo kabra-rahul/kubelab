@@ -1,0 +1,13 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: label-test
+  labels:
+    env: preprod
+    name: rahul
+    institute: simplilearn
+spec:
+  containers:
+    - name: lc00
+      image: ubuntu
+      command: ["/bin/bash","-c","while true; do echo Welcome; sleep 50; done"]

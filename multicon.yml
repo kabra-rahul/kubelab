@@ -1,0 +1,23 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: multipod
+spec:
+  restartPolicy: Never
+  volumes:
+    - name: shared-data
+      emptyDir: {}
+
+  containers:
+    - name: apache
+      image: httpd
+      volumeMounts:
+        - name: shared-data
+          mountPath: /var/www/html
+
+    - name: ubuntu
+      image: ubuntu
+      volumeMounts:
+        - name: shared-data
+          mountPath: /pod-data
+      command: ["/bin/bash","-c","echo Hello World > /pod-data/index.html"]

@@ -1,0 +1,14 @@
+kind: Pod
+apiVersion: v1
+metadata:
+  name: apachetest
+spec:
+  containers:
+    - name: apachecontainer
+      image: httpd
+      ports:
+        - containerPort: 80
+    - name: ubuntuicontainer
+      image: ubuntu
+      command: ["/bin/sh"]
+      args: ["-c", "while true; do echo Apache Implementation; sleep 10; done"]
